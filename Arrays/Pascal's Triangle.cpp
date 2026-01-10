@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// TYPE 1: Print Pascal’s Triangle
+
 class Solution {
 public:
     vector<int> generateRow(int row){
