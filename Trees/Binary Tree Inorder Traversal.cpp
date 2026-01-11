@@ -3,36 +3,35 @@ using namespace std;
 
 // Definition for a binary tree node.
   struct TreeNode {
-      int val;
-      TreeNode *left;
-      TreeNode *right;
-      TreeNode() : val(0), left(nullptr), right(nullptr) {}
-      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
- 
+
 class Solution {
 public:
        vector<int> inorderTraversal(TreeNode* root){
-        stack<TreeNode*> st;
-        TreeNode* node = root;
-        vector<int> inorder;
+        vector<int>inorder;
+        stack<TreeNode*>st;
 
-        while(true){
-            if(node != nullptr){
-                st.push(node);
-                node = node->left;
+        while(root != nullptr || !st.empty()){
+            if(root != nullptr){
+                st.push(root);
+                root = root->left;
             }else{
                 if(st.empty() == true)break;
-                node = st.top();
+                root = st.top();
                 st.pop();
-                
-                inorder.push_back(node->val);
-                node = node->right;
+
+                inorder.push_back(root->val);
+                root = root->right;
             }
         }
         return inorder;
-       }
+    }
 };
 
 
@@ -43,11 +42,11 @@ public:
 //        inorder(root->left, ans);
 //        ans.push_back(root->val);
 //        inorder(root->right, ans);
-//}
+//    }
 //    vector<int> inorderTraversal(TreeNode* root) {
 //        vector<int> ans;
 //        inorder(root, ans);
 //        return ans;
 //        
 //    }
-//};
+//  };
