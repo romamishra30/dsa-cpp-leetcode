@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 // Definition for a binary tree node.
@@ -10,19 +10,23 @@ using namespace std;
       TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
- 
+
 class Solution {
 public:
-    int maxDepth(TreeNode* root) {
+    int diameterOfBinaryTree(TreeNode* root){
+        int diameter = 0;
+        height(root, diameter);
+        return diameter;
+    }
+    int height(TreeNode* root, int &diameter){
         if(root == nullptr) return 0;
 
-        int leftHeight = maxDepth(root->left);
-        int rightHeight = maxDepth(root->right);
-
-        return max(leftHeight, rightHeight) + 1;
-        
+        int leftH = height(root->left, diameter);
+        int rightH = height(root->right, diameter);
+        diameter = max(diameter, leftH + rightH);
+        return 1 + max(leftH, rightH);
     }
 };
 
 // TC = O(N)
-// SC = 0(N)
+// SC = O(N)
