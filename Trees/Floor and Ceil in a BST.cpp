@@ -18,18 +18,20 @@ public:
 
         while(root != nullptr){
             if(root->val == val){
-                ceil = root->val;
                 floor = root->val;
-                break;
-            }else if(root->val > val){
                 ceil = root->val;
-                root = root->left;
-            }else{
+                break;
+            }
+            else if(root->val < val){
                 floor = root->val;
                 root = root->right;
             }
+            else {
+                ceil = root->val;
+                root = root->left;
+            }
         }
-        return {floor, ceil};
+        return{floor, ceil};
     }
 };
 
