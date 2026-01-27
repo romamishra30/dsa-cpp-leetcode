@@ -17,18 +17,29 @@ public:
         ListNode* curr = dummy;
         int carry = 0;
 
-        while(l1 != nullptr || l2 != nullptr || carry != 0){
-            int x = (l1 != nullptr) ? l1-> val : 0;
-            int y = (l2 != nullptr) ? l2-> val : 0;
-            int sum = x + y + carry;
-            carry = sum/10;
-            int digit = sum % 10;
-            curr->next = new ListNode (digit);
-            curr = curr-> next;
+        while(l1 != nullptr || l2 != nullptr){
+            int sum = carry;
 
-            if(l1 != nullptr) l1 = l1-> next;
-            if(l2 != nullptr) l2 = l2-> next;
+            if(l1) sum += l1->val;
+            if(l2) sum += l2->val;
+
+            ListNode* newNode = new ListNode(sum % 10);
+            carry = sum/10;
+
+            curr->next = newNode;
+            curr = curr->next;
+
+            if(l1) l1 = l1->next;
+            if(l2) l2 = l2->next;
+        }
+        if(carry){
+            ListNode* newNode = new ListNode(carry);
+            curr->next = newNode;
         }
         return dummy->next;
     }
 };
+
+
+// TC = O(max(l1,l2))
+// SC = O(max(l1,l2))

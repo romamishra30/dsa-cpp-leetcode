@@ -17,13 +17,13 @@ public:
         ListNode* even = head->next;
         ListNode* evenHead = even;
 
-        while(even && even->next){
-            odd->next = even->next;
+        while(even != nullptr && even->next != nullptr){
+
+            odd->next = odd->next->next;
+            even->next = even->next->next;
+
             odd = odd->next;
-
-            even->next = odd->next;
             even = even->next;
-
         }
         odd->next = evenHead;
         return head;
