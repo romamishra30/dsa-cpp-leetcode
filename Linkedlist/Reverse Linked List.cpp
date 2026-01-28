@@ -12,6 +12,7 @@ class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
         //ITERATIVE METHOD
+
        //ListNode* prev = nullptr;
        //ListNode* temp = head;
 
@@ -23,6 +24,9 @@ public:
        //}
        //return prev;
 
+
+// TC = O(N) - FOR ITERATIVE
+// SC = O(1) - FOR ITERATIVE
 
        //RECURSIVE METHOD
 
@@ -36,3 +40,6 @@ public:
        
     }
 };
+
+// TC = O(N) - FOR RECURSIVE 
+// SC = O(N) - FOR RECURSIVE
